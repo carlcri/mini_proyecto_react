@@ -1,0 +1,21 @@
+.custom-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box; /* This is important! */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+/* Style for when the input is focused */
+.custom-input:focus {
+  outline: none; /* Removes the default blue outline */
+  border-color: #007bff; /* A nice blue color for the border */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* A subtle blue glow */
+}
+
+/* Style for the placeholder text */
+.custom-input::placeholder {
+  color: #999;
+}
