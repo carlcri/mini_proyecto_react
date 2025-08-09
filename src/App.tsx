@@ -8,19 +8,22 @@ import { useState } from 'react';
 function App() {
 
   // const [quantity, setQuantity] = useState<string>('')
-
-  const [productsInShoppingCart, setProductsInShoppingCart] = useState<Set<number>>(new Set());
+  const [productsInShoppingCart, setProductsInShoppingCart] = useState<Map<number, number>>(new Map());
+//  const [productsInShoppingCart, setProductsInShoppingCart] = useState<Set<number>>(new Set());
 
   const handleonAddToCart = (productID: number) => {
       console.log(`el producto con ID: ${productID} fue agregado al carrito`);  
-      setProductsInShoppingCart(prevSet => {
-        const newSet = new Set(prevSet);
-        newSet.add(productID);
-
+      setProductsInShoppingCart(previousCart => {
+        const newCart = new Map(previousCart);
+        newCart.set(productID, (newCart.get(productID) || 0) + 1);
         
-        return newSet;
+        return newCart;
       })
-  }
+    }
+
+    console.log(productsInShoppingCart);
+
+
 
 //   const onInputQuantity = (event:ChangeEvent<HTMLInputElement>) => {
 //     const newValue:string = event.target.value;

@@ -3,13 +3,13 @@ import { type ChangeEvent, useState } from "react";
 import { ALL_PRODUCTS } from "../ProductsData";
 
 interface ShoppingCartProps {
-    productsInShoppingCart: Set<number>;
+    productsInShoppingCart: Map<number, number>; 
 }
 export const ShoppingCart = ({productsInShoppingCart}:ShoppingCartProps) => {
-
+    
 //    console.log(productsInShoppingCart);
     
-    const cartItemsArray: number[] = [...productsInShoppingCart]
+    const cartItems: Map<number,number> = (productsInShoppingCart);
 
     // cartItemsArray.forEach(element => {
     //     const aux = ALL_PRODUCTS.find(product => product.id === element)
@@ -40,10 +40,13 @@ export const ShoppingCart = ({productsInShoppingCart}:ShoppingCartProps) => {
         setQuantity(newQuantity);
     }
 
+    const aux:number[] = [...cartItems.keys()];
+    console.log(aux);
+
     return(
     <>
         <h3>Mi Carrito</h3>
-        <ul>
+        {/* <ul>
             {cartItemsArray.map((element, key)=>{
                 const product = ALL_PRODUCTS.find((p)=>p.id===element);
                 if(!product){
@@ -52,15 +55,11 @@ export const ShoppingCart = ({productsInShoppingCart}:ShoppingCartProps) => {
                 return (
                     <CartItem key={key} item_id={product.id} quantity={Number(quantity)} onInputQuantity={onInputQuantity}
                     onMinusOne={handleonMinusOne} onAddOne={handleOnAddOne}/>
-                    // <li key={product.id}>{product.id} {product.name}</li>
-            //             {/* <CartItem item_id={2} 
-            //   quantity={Number(quantity)} 
-            //   onInputQuantity={onInputQuantity} 
-            //   onMinusOne={handleonMinusOne}
-            //   onAddOne={handleOnAddOne}/> */}    
+                    
+  
                 );
             })}
-        </ul>
+        </ul> */}
 
     {/* <CartItem item_id={2} 
               quantity={Number(quantity)} 
