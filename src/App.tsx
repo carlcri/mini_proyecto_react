@@ -1,49 +1,57 @@
 import './App.css'
-import { useState, type ChangeEvent } from 'react'
-import { ProductCard, ProductCarousel, QuantitySelector } from './components'
+import { ProductCard, ProductCarousel, ShoppingCart } from './components'
 import { ALL_PRODUCTS } from './components'
+import { useState } from 'react';
 
 
 
 function App() {
 
-  const [quantity, setQuantity] = useState<string>('')
+  // const [quantity, setQuantity] = useState<string>('')
+
+  const [productsInShoppingCart, setProductsInShoppingCart] = useState<Set<number>>(new Set());
 
   const handleonAddToCart = (productID: number) => {
       console.log(`el producto con ID: ${productID} fue agregado al carrito`);  
+      setProductsInShoppingCart(prevSet => {
+        const newSet = new Set(prevSet);
+        newSet.add(productID);
+
+        
+        return newSet;
+      })
   }
 
-  const onInputQuantity = (event:ChangeEvent<HTMLInputElement>) => {
-    const newValue:string = event.target.value;
-    console.log(event.target.value);
-    if(!isNaN(Number(newValue))){
-      setQuantity(newValue);
-    }
+//   const onInputQuantity = (event:ChangeEvent<HTMLInputElement>) => {
+//     const newValue:string = event.target.value;
+// //    console.log(event.target.value);
+//     if(!isNaN(Number(newValue))){
+//       setQuantity(newValue);
+//     }
 
-  }
+//   }
 
 
-  const handleonMinusOne = () => {
-    let newQuantity = Number(quantity)-1;
+//   const handleonMinusOne = () => {
+//     const newQuantity = Number(quantity)-1;
 
-      if (newQuantity >= 0){
-        setQuantity(String(newQuantity))
-      }
-  }
+//       if (newQuantity >= 0){
+//         setQuantity(String(newQuantity))
+//       }
+//   }
 
-  const onAddOne = () => {
-    let newQuantity = String(Number(quantity)+1);
-    setQuantity(newQuantity);
-  }
+//   const onAddOne = () => {
+//     const newQuantity = String(Number(quantity)+1);
+//     setQuantity(newQuantity);
+//   }
 
-  //console.log(`animal es: ${animal}`);
 
   return (
     <>
-    <QuantitySelector quantity={quantity} onInputQuantity={onInputQuantity} onMinusOne={handleonMinusOne} onAddOne={onAddOne}/>
+    <ShoppingCart productsInShoppingCart={productsInShoppingCart}/>   
+    <br />
     <br />
     <ProductCarousel products={ALL_PRODUCTS} onAddToCart={handleonAddToCart}/>
-    <br />
     <br />
     <ul>
       {ALL_PRODUCTS.map((item, index)=>(

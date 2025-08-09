@@ -48,22 +48,22 @@ export const ALL_PRODUCTS: Product[] = [
     name: "Auriculares Inalámbricos",
     price: 180,
     description: "Cancelación de ruido activa y sonido de alta fidelidad.",
-    image: "https://images.pexels.com/photos/33242733/pexels-photo-33242733.jpeg"}]
-//   } ]
-//   {
-//     id: 7,
-//     name: "Micrófono USB",
-//     price: 90,
-//     description: "Captura tu voz con claridad para podcasts o grabaciones.",
-//     image: "https://via.placeholder.com/150?text=Microfono+USB"
-//   },
-//   {
-//     id: 8,
-//     name: "Disco Duro Externo 2TB",
-//     price: 110,
-//     description: "Almacena todos tus archivos importantes de forma segura.",
-//     image: "https://via.placeholder.com/150?text=Disco+Duro+2TB"
-//   },
+    image: "https://images.pexels.com/photos/33242733/pexels-photo-33242733.jpeg"},
+
+  {
+    id: 7,
+    name: "Micrófono USB",
+    price: 90,
+    description: "Captura tu voz con claridad para podcasts o grabaciones.",
+    image: "https://images.pexels.com/photos/12541646/pexels-photo-12541646.jpeg"
+  },
+  {
+    id: 8,
+    name: "Disco Duro Externo 2TB",
+    price: 110,
+    description: "Almacena todos tus archivos importantes de forma segura.",
+    image: "https://images.pexels.com/photos/4675007/pexels-photo-4675007.jpeg"
+  }]
 //   {
 //     id: 9,
 //     name: "Router Wi-Fi 6",

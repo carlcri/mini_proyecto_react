@@ -19,7 +19,7 @@ export const QuantitySelector = ({quantity,
     return(
         <>
         <div className="quantity-selector-container">
-            <h3>seleccionar cantidad</h3>
+            {/* <h3>seleccionar cantidad</h3> */}
             <div className="quantity-controls">
                 <Button label="-" parentMethod={onMinusOne}></Button>
                 <InputBox placeholder="QTY" value={quantity} parentMethod={onInputQuantity}/>
