@@ -26,10 +26,10 @@ export const QuantitySelector = ({quantity,
                 <Button label="+" parentMethod={onAddOne}/>
             </div>
         </div>
-
+{/* 
         <div>
             <h4>{quantity}</h4>
-        </div>
+        </div> */}
         </>
     )
 }

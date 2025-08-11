@@ -63,21 +63,21 @@ export const ALL_PRODUCTS: Product[] = [
     price: 110,
     description: "Almacena todos tus archivos importantes de forma segura.",
     image: "https://images.pexels.com/photos/4675007/pexels-photo-4675007.jpeg"
-  }]
-//   {
-//     id: 9,
-//     name: "Router Wi-Fi 6",
-//     price: 150,
-//     description: "Conexión a internet ultrarrápida y estable para tu hogar.",
-//     image: "https://via.placeholder.com/150?text=Router+WiFi+6"
-//   },
-//   {
-//     id: 10,
-//     name: "Silla de Oficina Ergonómica",
-//     price: 250,
-//     description: "Soporte lumbar ajustable para largas jornadas de trabajo.",
-//     image: "https://via.placeholder.com/150?text=Silla+Oficina"
-//   },
+  },
+  {
+    id: 9,
+    name: "Router Wi-Fi 6",
+    price: 150,
+    description: "Conexión a internet ultrarrápida y estable para tu hogar.",
+    image: "https://images.pexels.com/photos/32698507/pexels-photo-32698507.jpeg"
+  },
+  {
+    id: 10,
+    name: "Silla de Oficina Ergonómica",
+    price: 250,
+    description: "Soporte lumbar ajustable para largas jornadas de trabajo.",
+    image: "https://images.pexels.com/photos/12269763/pexels-photo-12269763.jpeg"
+  },]
 //   // ... (otros 90 elementos con datos ficticios)
 //   {
 //     id: 11,

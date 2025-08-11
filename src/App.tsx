@@ -1,13 +1,12 @@
 import './App.css'
 import { ProductCard, ProductCarousel, ShoppingCart } from './components'
 import { ALL_PRODUCTS } from './components'
-import { useState } from 'react';
+import { useState, type ChangeEvent } from 'react';
 
 
 
 function App() {
 
-  // const [quantity, setQuantity] = useState<string>('')
   const [productsInShoppingCart, setProductsInShoppingCart] = useState<Map<number, number>>(new Map());
 //  const [productsInShoppingCart, setProductsInShoppingCart] = useState<Set<number>>(new Set());
 
@@ -21,37 +20,100 @@ function App() {
       })
     }
 
-    console.log(productsInShoppingCart);
+//    console.log(productsInShoppingCart);
+
+  const handleOnDelete = (productID: number) => {
+    // console.log(`product ID to delete ${productID}`);
+    setProductsInShoppingCart(previousCart => {
+      const newCart = new Map(previousCart);
+      const operationDelete: Boolean = newCart.delete(productID);
+      if(operationDelete){
+        return newCart;
+      }
+      return previousCart;
+
+    })
+  }
+
+    
+
+  const handleonInputQuantity = (event:ChangeEvent<HTMLInputElement>, productID:number) => {
+    const newValue:string = event.target.value;
+    // if (newValue === '') {
+    //     setProductsInShoppingCart(previousCart => {
+    //         const newCart = new Map(previousCart);
+    //         newCart.set(productID, 1);
+    //         return newCart;
+    //     });
+    //     return; // Salimos de la función para evitar el resto de la lógica
+    // }
+//    console.log(`current q: ${newValue} | ${quantity}`);
+//    console.log(event.target.value);
+    if(!isNaN(Number(newValue))){
+//      setQuantity(newValue);
+      setProductsInShoppingCart(previousCart => {
+        const newCart = new Map(previousCart);
+        newCart.set(productID, Number(newValue));
+        
+        return newCart;
+      })            
+    }
+  }
 
 
+  const handleonMinusOne = (productID: number) => {
+    setProductsInShoppingCart(previousCart => {
+//    console.log(`cantidad: ${previousCart.get(productID)}`);    
+    const newCart = new Map(previousCart);
+    const newQuantity = Number(previousCart.get(productID)) -1;
+  
+    if (newQuantity > 0){
+      newCart.set(productID, newQuantity);
+    }
+        
+    return newCart;
+    })
 
-//   const onInputQuantity = (event:ChangeEvent<HTMLInputElement>) => {
-//     const newValue:string = event.target.value;
-// //    console.log(event.target.value);
-//     if(!isNaN(Number(newValue))){
-//       setQuantity(newValue);
-//     }
+  }
 
-//   }
+  const handleOnAddOne = (productID:number) => {
+    setProductsInShoppingCart(previousCart => {
+//    console.log(`cantidad: ${previousCart.get(productID)}`);    
+      const newCart = new Map(previousCart);
+      const newQuantity = Number(previousCart.get(productID)) + 1;
+      newCart.set(productID, newQuantity);
+       
+      return newCart;
+      })
+  }
 
-
-//   const handleonMinusOne = () => {
-//     const newQuantity = Number(quantity)-1;
-
-//       if (newQuantity >= 0){
-//         setQuantity(String(newQuantity))
-//       }
-//   }
-
-//   const onAddOne = () => {
-//     const newQuantity = String(Number(quantity)+1);
-//     setQuantity(newQuantity);
-//   }
+  const handleBuyButton = () => {
+    const cartItemsArray = Array.from(productsInShoppingCart);
+    let subtotal: number = 0;
+    
+    cartItemsArray.forEach(element => {
+      const productID:number = element[0];
+      const quantity = productsInShoppingCart.get(productID);
+      if(quantity !== undefined){
+        console.log('hola');
+        const product = ALL_PRODUCTS.find((p)=>p.id===productID);
+        if(product){
+          subtotal = subtotal + product.price * quantity;
+        }
+      }
+    });
+    console.log(`subtotal compra: ${subtotal}`);
+  }
 
 
   return (
     <>
-    <ShoppingCart productsInShoppingCart={productsInShoppingCart}/>   
+    <ShoppingCart productsInShoppingCart={productsInShoppingCart} 
+                  handleonMinusOne={handleonMinusOne} 
+                  handleOnAddOne={handleOnAddOne}
+                  handleonInputQuantity={handleonInputQuantity}
+                  handleOnDelete={handleOnDelete}
+                  handleBuyButton={handleBuyButton}/>   
     <br />
     <br />
     <ProductCarousel products={ALL_PRODUCTS} onAddToCart={handleonAddToCart}/>

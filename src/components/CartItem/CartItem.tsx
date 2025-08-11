@@ -2,6 +2,7 @@ import { useMemo, type ChangeEvent } from "react";
 import { ALL_PRODUCTS } from "../ProductsData";
 import { QuantitySelector } from "../QuantitySelector/QuantitySelector";
 import './CartItem.css'
+import { Button } from "../Button/Button";
 
 
 interface CartItemProps{
@@ -9,11 +10,11 @@ interface CartItemProps{
     quantity: number;
     onInputQuantity: (event:ChangeEvent<HTMLInputElement>)=> void;
     onMinusOne: () =>void;
-    onAddOne: () => void;
-    
+    onAddOne: () => void; 
+    onDelete: () => void;
 }
 
-export const CartItem = ({item_id, quantity, onInputQuantity, onMinusOne, onAddOne}:CartItemProps)=>{
+export const CartItem = ({item_id, quantity, onInputQuantity, onMinusOne, onAddOne, onDelete}:CartItemProps)=>{
 
     const product = useMemo(() => {
         return ALL_PRODUCTS.find(p => p.id === item_id);
@@ -44,8 +45,11 @@ export const CartItem = ({item_id, quantity, onInputQuantity, onMinusOne, onAddO
                 onMinusOne={onMinusOne}
                 onAddOne={onAddOne}
             />
+
             {/* Agregamos un botón para eliminar el producto */}
-            {/* <button className="remove-button" onClick={() => onRemoveItem(productId)}>Eliminar</button> */}
+            <div className="button-delete-container">
+                <Button label="Eliminar" parentMethod={onDelete}/>
+            </div>
         </div>
         </div>
     ) 

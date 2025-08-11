@@ -23,14 +23,16 @@ export const ProductCarousel = ({products, onAddToCart}: ProductCarouselProps) =
 
     const handlePrevious = () => {
         if (currentIndex > 0){
-            setCurrentIndex(currentIndex-1);
+            return setCurrentIndex(currentIndex-1);
         }
+        return setCurrentIndex(products.length - 1);
     }
 
     const handleNext = () =>{
         if(currentIndex < products.length - 1){
-            setCurrentIndex(currentIndex+1);
+            return setCurrentIndex(currentIndex+1);
         }
+        return setCurrentIndex(0);
     }
 
     const current_product = products[currentIndex]

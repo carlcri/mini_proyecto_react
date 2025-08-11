@@ -49,3 +49,24 @@
 .remove-button:hover {
   background-color: #c82333;
 }
+
+/* 🟢 Estilos para el contenedor del botón */
+.button-delete-container {
+  /* Aquí puedes definir estilos para el contenedor si es necesario */
+}
+
+/* 🟢 Estilos específicos para el botón dentro del contenedor */
+.button-delete-container button {
+  background-color: #484a51;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 0.9rem;
+}
+
+.button-delete-container button:hover {
+  background-color: #c82333;
+}
