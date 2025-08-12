@@ -1,0 +1,41 @@
+/* src/components/CartIcon/CartIcon.css */
+
+.cart-icon-container {
+  position: fixed; /* 🟢 Fija el elemento en la ventana del navegador */
+  top: 20px;       /* 🟢 Distancia desde la parte superior */
+  right: 20px;     /* 🟢 Distancia desde la derecha */
+  z-index: 1000;   /* 🟢 Asegura que esté por encima de otros elementos */
+}
+
+.cart-icon-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 50%; /* 🟢 Para que el botón sea circular */
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.cart-icon-button:hover {
+  transform: scale(1.1);
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}

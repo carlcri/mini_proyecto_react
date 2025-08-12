@@ -1,5 +1,5 @@
 import './App.css'
-import { ProductCard, ProductCarousel, ShoppingCart } from './components'
+import { ProductCard, ProductCarousel, ShoppingCart, CartIcon} from './components'
 import { ALL_PRODUCTS } from './components'
 import { useState, type ChangeEvent } from 'react';
 
@@ -8,6 +8,8 @@ import { useState, type ChangeEvent } from 'react';
 function App() {
 
   const [productsInShoppingCart, setProductsInShoppingCart] = useState<Map<number, number>>(new Map());
+  const [showCartView, setShowCartView  ] = useState<boolean>(false);
+
 //  const [productsInShoppingCart, setProductsInShoppingCart] = useState<Set<number>>(new Set());
 
   const handleonAddToCart = (productID: number) => {
@@ -105,26 +107,36 @@ function App() {
     console.log(`subtotal compra: ${subtotal}`);
   }
 
+  const onToggleView = () =>{
+    setShowCartView(!showCartView);
+    console.log(`hola toggle: ${showCartView}`);
+  }
+
+  // 🟢 Calcula el número total de ítems para el contador
+    const totalItemsInCart = [...productsInShoppingCart.values()].reduce((sum, current) => sum + current, 0);
 
   return (
     <>
-    <ShoppingCart productsInShoppingCart={productsInShoppingCart} 
-                  handleonMinusOne={handleonMinusOne} 
-                  handleOnAddOne={handleOnAddOne}
-                  handleonInputQuantity={handleonInputQuantity}
-                  handleOnDelete={handleOnDelete}
-                  handleBuyButton={handleBuyButton}/>   
-    <br />
-    <br />
-    <ProductCarousel products={ALL_PRODUCTS} onAddToCart={handleonAddToCart}/>
-    <br />
-    <ul>
-      {ALL_PRODUCTS.map((item, index)=>(
-        <ProductCard key={index} product={item} onAddToCart={handleonAddToCart}/>
-      ))}
-    </ul>
+    <CartIcon itemCount={totalItemsInCart} onToggleView={onToggleView} />
 
-    
+    {showCartView && (
+        <ShoppingCart productsInShoppingCart={productsInShoppingCart} 
+                    handleonMinusOne={handleonMinusOne} 
+                    handleOnAddOne={handleOnAddOne}
+                    handleonInputQuantity={handleonInputQuantity}
+                    handleOnDelete={handleOnDelete}
+                    handleBuyButton={handleBuyButton}/>
+    )}
+    {!showCartView && (
+        <><ProductCarousel products={ALL_PRODUCTS} onAddToCart={handleonAddToCart}/>
+        <ul>
+          {ALL_PRODUCTS.map((item, index)=>(
+            <ProductCard key={index} product={item} onAddToCart={handleonAddToCart}/>
+          ))}
+        </ul>      
+        <br />
+        </>  
+    )}
     </>
   )
 }
