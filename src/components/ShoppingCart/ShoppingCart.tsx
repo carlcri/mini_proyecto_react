@@ -17,8 +17,6 @@ export const ShoppingCart = ({productsInShoppingCart,
                               handleonInputQuantity,
                               handleOnDelete, handleBuyButton}:ShoppingCartProps) => {
     
-//    console.log(productsInShoppingCart);
-    
     const cartItems: Map<number,number> = (productsInShoppingCart);
 
     // cartItemsArray.forEach(element => {
@@ -49,7 +47,11 @@ export const ShoppingCart = ({productsInShoppingCart,
 
     return(
     <>
-        <h3>Mi Carrito</h3>
+        {cartItems.size === 0 && (
+            <h3>Tu carrito esta vacio, regresa para efectuar alguna compra</h3>
+        ) }
+        {cartItems.size>0 && (
+        <>
         <ul>
             {cartItemsArray.map((element, key)=>{
                 const product = ALL_PRODUCTS.find((p)=>p.id===element);
@@ -68,7 +70,12 @@ export const ShoppingCart = ({productsInShoppingCart,
                         onDelete={() => handleOnDelete(product.id)}/>             
                 );
             })}
-        </ul>
+        </ul>        
+        </>    
+            
+
+        )}
+
         {/* Solo se renderiza si el arreglo no es vacio*/}
         {cartItemsArray.length > 0 ? <Button label="comprar" parentMethod={handleBuyButton}/> : null  }
         

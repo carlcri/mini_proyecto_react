@@ -1,5 +1,5 @@
 import './App.css'
-import { ProductCard, ProductCarousel, ShoppingCart, CartIcon} from './components'
+import { ProductCard, ProductCarousel, ShoppingCart, CartIcon, InputBox} from './components'
 import { ALL_PRODUCTS } from './components'
 import { useState, type ChangeEvent } from 'react';
 
@@ -9,8 +9,9 @@ function App() {
 
   const [productsInShoppingCart, setProductsInShoppingCart] = useState<Map<number, number>>(new Map());
   const [showCartView, setShowCartView  ] = useState<boolean>(false);
+  const [searchField, setSearchField] = useState<string>('')
+  const [products_filtered, set_products_filtered] = useState(ALL_PRODUCTS);
 
-//  const [productsInShoppingCart, setProductsInShoppingCart] = useState<Set<number>>(new Set());
 
   const handleonAddToCart = (productID: number) => {
       console.log(`el producto con ID: ${productID} fue agregado al carrito`);  
@@ -104,7 +105,7 @@ function App() {
         }
       }
     });
-    console.log(`subtotal compra: ${subtotal}`);
+    alert(`subtotal compra: $${subtotal}`);
   }
 
   const onToggleView = () =>{
@@ -113,7 +114,23 @@ function App() {
   }
 
   // 🟢 Calcula el número total de ítems para el contador
-    const totalItemsInCart = [...productsInShoppingCart.values()].reduce((sum, current) => sum + current, 0);
+  const totalItemsInCart = [...productsInShoppingCart.values()].reduce((sum, current) => sum + current, 0);
+
+
+  const applyFilter = (name: string) => {
+    var filtered = ALL_PRODUCTS;
+    if(name){
+      filtered = filtered.filter(element => element.name.toLowerCase().includes(name.toLowerCase()));
+    }
+    set_products_filtered(filtered);       
+  }
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newSearchField = event.target.value;
+    setSearchField(newSearchField); 
+    applyFilter(newSearchField);
+  }
+
 
   return (
     <>
@@ -128,89 +145,28 @@ function App() {
                     handleBuyButton={handleBuyButton}/>
     )}
     {!showCartView && (
-        <><ProductCarousel products={ALL_PRODUCTS} onAddToCart={handleonAddToCart}/>
-        <ul>
+        <><ProductCarousel products={ALL_PRODUCTS.slice(0,10)} onAddToCart={handleonAddToCart}/>
+        {/* <ul>
           {ALL_PRODUCTS.map((item, index)=>(
             <ProductCard key={index} product={item} onAddToCart={handleonAddToCart}/>
           ))}
-        </ul>      
+        </ul>       */}
         <br />
         </>  
     )}
+    {!showCartView && (
+      <>
+      <InputBox placeholder='buscar producto' value={searchField} parentMethod={handleInputChange}/>
+      <ul>
+        {products_filtered.map((item, index)=>(
+          <ProductCard key={index} product={item} onAddToCart={handleonAddToCart}/>
+        ))}
+      </ul>
+      </>
+    )}
+
     </>
   )
 }
 
 export default App
-
-
-
-
-
-
-
-
-// import './App.css'
-// import { useState, type ChangeEvent } from 'react'
-// import { Button, InputBox, ProductCard, ProductCarousel, QuantitySelector } from './components'
-// import { ALL_PRODUCTS } from './components'
-
-
-
-// function App() {
-//   const [count, setCount] = useState(0)
-//   const [animal, setAnimal] = useState<string>('')
-
-//   const countMore = () =>{
-//     setCount(count+1);
-//   }
-
-//   const capture_animal = (event:ChangeEvent<HTMLInputElement>) =>{
-//     setAnimal(event.target.value);
-//   }
-
-//   const handleonAddToCart = (productID: number) => {
-//       console.log(`el producto con ID: ${productID} fue agregado al carrito`);  
-//   }
-
-//   const handleonInputQuantity = (event:ChangeEvent<HTMLInputElement>) => {
-//     console.log(event.target.value);
-//   }
-
-//   const handleonMinusOne = () => {
-
-//   }
-
-//   const onAddOne = () => {
-
-//   }
-
-//   //console.log(`animal es: ${animal}`);
-
-//   return (
-//     <>
-//     <QuantitySelector quantity='0' onInputQuantity={handleonInputQuantity} onMinusOne={handleonMinusOne} onAddOne={onAddOne}/>
-//     <br />
-//     <ProductCarousel products={ALL_PRODUCTS} onAddToCart={handleonAddToCart}/>
-//     <br />
-//     <Button label={`count is ${count}`} parentMethod={countMore} />
-//     <br />
-//     <br />
-//     <InputBox 
-//       placeholder={'escribe tu animal favorito'}
-//       value={animal}
-//       parentMethod={capture_animal}/>
-//     <h3>{animal}</h3>
-//     <br />
-//     <ul>
-//       {ALL_PRODUCTS.map((item, index)=>(
-//         <ProductCard key={index} product={item} onAddToCart={handleonAddToCart}/>
-//       ))}
-//     </ul>
-
-    
-//     </>
-//   )
-// }
-
-// export default App

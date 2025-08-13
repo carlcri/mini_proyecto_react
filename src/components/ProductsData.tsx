@@ -77,78 +77,78 @@ export const ALL_PRODUCTS: Product[] = [
     price: 250,
     description: "Soporte lumbar ajustable para largas jornadas de trabajo.",
     image: "https://images.pexels.com/photos/12269763/pexels-photo-12269763.jpeg"
+  },
+
+  {
+    id: 11,
+    name: "Batería Portátil 20000mAh",
+    price: 50,
+    description: "Carga tu smartphone y tablet varias veces sobre la marcha.",
+    image: "https://images.pexels.com/photos/719399/pexels-photo-719399.jpeg"
+  },
+  {
+    id: 12,
+    name: "Smartwatch Deportivo",
+    price: 200,
+    description: "Monitorea tu actividad física y notificaciones.",
+    image: "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg"
+  },
+  {
+    id: 13,
+    name: "Altavoz Bluetooth Portátil",
+    price: 75,
+    description: "Sonido potente en un diseño compacto y resistente al agua.",
+    image: "https://images.pexels.com/photos/1034653/pexels-photo-1034653.jpeg"
+  },
+  {
+    id: 14,
+    name: "Proyector Mini",
+    price: 190,
+    description: "Convierte cualquier pared en una pantalla de cine.",
+    image: "https://images.pexels.com/photos/2510428/pexels-photo-2510428.jpeg"
+  },
+  {
+    id: 15,
+    name: "Drone con Cámara 4K",
+    price: 500,
+    description: "Captura increíbles tomas aéreas con facilidad.",
+    image: "https://images.pexels.com/photos/336232/pexels-photo-336232.jpeg"
+  },
+  {
+    id: 16,
+    name: "Licuadora de Alta Velocidad",
+    price: 130,
+    description: "Prepara smoothies y sopas cremosas en segundos.",
+    image: "https://images.pexels.com/photos/3094227/pexels-photo-3094227.jpeg"
+  },
+  {
+    id: 17,
+    name: "Cafetera Programable",
+    price: 95,
+    description: "Despierta con el aroma de café recién hecho.",
+    image: "https://images.pexels.com/photos/593328/pexels-photo-593328.jpeg"
+  },
+  {
+    id: 18,
+    name: "Set de Cuchillos de Chef",
+    price: 80,
+    description: "Cuchillos de acero inoxidable de alta calidad para tu cocina.",
+    image: "https://images.pexels.com/photos/2002429/pexels-photo-2002429.jpeg"
+  },
+  {
+    id: 19,
+    name: "Freidora de Aire",
+    price: 115,
+    description: "Comidas crujientes y saludables con menos aceite.",
+    image: "https://images.pexels.com/photos/8879632/pexels-photo-8879632.jpeg"
+  },
+  {
+    id: 20,
+    name: "Aspiradora Robot",
+    price: 320,
+    description: "Limpia tus pisos automáticamente, incluso cuando no estás en casa.",
+    image: "https://images.pexels.com/photos/844874/pexels-photo-844874.jpeg"
   },]
-//   // ... (otros 90 elementos con datos ficticios)
-//   {
-//     id: 11,
-//     name: "Batería Portátil 20000mAh",
-//     price: 50,
-//     description: "Carga tu smartphone y tablet varias veces sobre la marcha.",
-//     image: "https://via.placeholder.com/150?text=Power+Bank"
-//   },
-//   {
-//     id: 12,
-//     name: "Smartwatch Deportivo",
-//     price: 200,
-//     description: "Monitorea tu actividad física y notificaciones.",
-//     image: "https://via.placeholder.com/150?text=Smartwatch"
-//   },
-//   {
-//     id: 13,
-//     name: "Altavoz Bluetooth Portátil",
-//     price: 75,
-//     description: "Sonido potente en un diseño compacto y resistente al agua.",
-//     image: "https://via.placeholder.com/150?text=Altavoz+BT"
-//   },
-//   {
-//     id: 14,
-//     name: "Proyector Mini",
-//     price: 190,
-//     description: "Convierte cualquier pared en una pantalla de cine.",
-//     image: "https://via.placeholder.com/150?text=Proyector+Mini"
-//   },
-//   {
-//     id: 15,
-//     name: "Drone con Cámara 4K",
-//     price: 500,
-//     description: "Captura increíbles tomas aéreas con facilidad.",
-//     image: "https://via.placeholder.com/150?text=Drone"
-//   },
-//   {
-//     id: 16,
-//     name: "Licuadora de Alta Velocidad",
-//     price: 130,
-//     description: "Prepara smoothies y sopas cremosas en segundos.",
-//     image: "https://via.placeholder.com/150?text=Licuadora"
-//   },
-//   {
-//     id: 17,
-//     name: "Cafetera Programable",
-//     price: 95,
-//     description: "Despierta con el aroma de café recién hecho.",
-//     image: "https://via.placeholder.com/150?text=Cafetera"
-//   },
-//   {
-//     id: 18,
-//     name: "Set de Cuchillos de Chef",
-//     price: 80,
-//     description: "Cuchillos de acero inoxidable de alta calidad para tu cocina.",
-//     image: "https://via.placeholder.com/150?text=Set+Cuchillos"
-//   },
-//   {
-//     id: 19,
-//     name: "Freidora de Aire",
-//     price: 115,
-//     description: "Comidas crujientes y saludables con menos aceite.",
-//     image: "https://via.placeholder.com/150?text=Freidora+Aire"
-//   },
-//   {
-//     id: 20,
-//     name: "Aspiradora Robot",
-//     price: 320,
-//     description: "Limpia tus pisos automáticamente, incluso cuando no estás en casa.",
-//     image: "https://via.placeholder.com/150?text=Aspiradora+Robot"
-//   },
 //   { id: 21, name: "Tabla de cortar de bambú", price: 30, description: "Tabla duradera y ecológica para la cocina.", image: "https://via.placeholder.com/150?text=Tabla" },
 //   { id: 22, name: "Set de sartenes antiadherentes", price: 90, description: "Cocina sin que nada se pegue, fácil de limpiar.", image: "https://via.placeholder.com/150?text=Sartenes" },
 //   { id: 23, name: "Tostadora retro", price: 45, description: "Estilo vintage para tu desayuno.", image: "https://via.placeholder.com/150?text=Tostadora" },
